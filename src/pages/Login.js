@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+// import { toast } from "react-toastify";
+import { checkValidData } from "../utils/validate";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState();
+  const email = useRef(null);
+  const password = useRef(null);
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
+  };
+
+  const handleButtonClick = () => {
+    // console.log("email", email.current.value);
+    // console.log("password", password.current.value);
+
+    const message = checkValidData(email.current.value, password.current.value);
+    setErrorMessage(message);
   };
 
   return (
@@ -18,44 +31,41 @@ const Login = () => {
       </div>
       <div className="w-[35%] absolute bg-[#000000BF] top-[15%] left-[32.5%] flex justify-center ">
         <div className="w-[70%]">
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
             <h1 className="text-white mt-10 text-4xl font-semibold">
               {isSignInForm ? "Login" : "Sign Up"}
             </h1>
             {!isSignInForm && (
               <input
                 type="text"
-                name=""
-                value=""
                 placeholder="Name"
                 className="px-2 py-3 mb-3 mt-6 outline-none bg-[#333333] rounded w-[100%]"
               />
             )}
             {isSignInForm ? (
               <input
+                ref={email}
                 type="email"
-                name=""
-                value=""
                 placeholder="Email or phone number"
                 className="px-2 py-3 mb-3 mt-6 outline-none bg-[#333333] rounded w-[100%]"
               />
             ) : (
               <input
+                ref={email}
                 type="email"
-                name=""
-                value=""
                 placeholder="Email or phone number"
                 className="px-2 py-3 mb-3 outline-none bg-[#333333] rounded w-[100%]"
               />
             )}
             <input
-              type="email"
-              name=""
-              value=""
+              ref={password}
+              type="password"
               placeholder="Password"
               className="px-2 py-3 outline-none bg-[#333333] rounded w-[100%]"
             />
+            <p className="text-red-700 py-2 font-semibold">{errorMessage}</p>
             <button
+              onClick={handleButtonClick}
               type="submit"
               className="bg-[#E50914] py-3 text-white mt-6 rounded w-[100%]"
             >
@@ -68,15 +78,15 @@ const Login = () => {
               onClick={toggleSignInForm}
             >
               {isSignInForm ? (
-                <div>
+                <>
                   New to Netflix? &nbsp;
                   <span className="text-white">Sign up now</span>
-                </div>
+                </>
               ) : (
-                <div>
+                <>
                   Already registered? &nbsp;
                   <span className="text-white">Sign In now</span>
-                </div>
+                </>
               )}
             </p>
             <p className="text-[#8C8C8C] text-[13px] mt-2">
