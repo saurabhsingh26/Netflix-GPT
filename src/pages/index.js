@@ -1,3 +1,3 @@
 import Login from "./Login";
-
-export { Login };
+import Browse from "./Browse";
+export { Login, Browse };

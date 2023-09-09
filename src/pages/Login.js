@@ -1,10 +1,21 @@
 import React, { useRef, useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { checkValidData } from "../utils/validate";
+import { useNavigate } from "react-router-dom";
+import { addUser } from "../Redux/slices/userSlice";
+import { useDispatch } from "react-redux";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -30,8 +41,24 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed in
+          // eslint-disable-next-line no-unused-vars
           const user = userCredential.user;
-          console.log("user", user);
+          updateProfile(auth.currentUser, {
+            displayName: name.current.value,
+            photoURL: "https://avatars.githubusercontent.com/u/80765330?v=4",
+          })
+            .then(() => {
+              // Profile updated!
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrorMessage(error.message);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -49,7 +76,11 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("user", user);
+          if (user) {
+            navigate("/browse");
+          } else {
+            navigate("/");
+          }
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -61,7 +92,7 @@ const Login = () => {
 
   return (
     <div className="relative">
-      <div className="absolute bg-gradient-to-b from-black h-[100%] w-[100%]">
+      <div className="absolute bg-gradient-to-b from-black h-screen w-screen">
         <div className="w-64 h-12 px-4 pt-0">
           <img
             src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
@@ -77,6 +108,7 @@ const Login = () => {
             </h1>
             {!isSignInForm && (
               <input
+                ref={name}
                 type="text"
                 placeholder="Name"
                 className="px-2 py-3 mb-3 mt-6 outline-none bg-[#333333] rounded w-[100%]"
