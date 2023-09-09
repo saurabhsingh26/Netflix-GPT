@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
-// import { toast } from "react-toastify";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
 import { checkValidData } from "../utils/validate";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -17,6 +18,45 @@ const Login = () => {
 
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
+
+    if (message) return;
+
+    if (!isSignInForm) {
+      // Sign up
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log("user", user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          // const errorMessage = error.message;
+          setErrorMessage(errorCode);
+          // ..
+        });
+    } else {
+      // Sign In
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log("user", user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          // const errorMessage = error.message;
+          setErrorMessage(errorCode);
+        });
+    }
   };
 
   return (
