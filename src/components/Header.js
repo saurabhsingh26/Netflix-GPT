@@ -42,14 +42,21 @@ const Header = () => {
       <div className="w-64 h-12 px-4 pt-0">
         <img src={LOGO} alt="logo" />
       </div>
-      {user && <div className="pt-6 pr-4">
-        <img
-          className="text-center"
-          src="https://occ-0-6247-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdpkabKqQAxyWzo6QW_ZnPz1IZLqlmNfK-t4L1VIeV1DY00JhLo_LMVFp936keDxj-V5UELAVJrU--iUUY2MaDxQSSO-0qw.png?r=e6e"
-          alt=""
-        />
-        <button onClick={handleSignOut} className="text-white">Sign out</button>
-      </div>}
+      {user && (
+        <div className="pt-6 pr-4 flex">
+          <img
+            className=" h-7"
+            src="https://occ-0-6247-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdpkabKqQAxyWzo6QW_ZnPz1IZLqlmNfK-t4L1VIeV1DY00JhLo_LMVFp936keDxj-V5UELAVJrU--iUUY2MaDxQSSO-0qw.png?r=e6e"
+            alt=""
+          />
+          <button
+            onClick={handleSignOut}
+            className="text-white bg-[#E50914] h-7 px-1"
+          >
+            Sign out
+          </button>
+        </div>
+      )}
     </div>
   );
 };
