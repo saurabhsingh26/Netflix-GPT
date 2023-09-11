@@ -6,13 +6,11 @@ const VideoBackground = ({ movieId }) => {
   const trailerVideo = useSelector((store) => store.movies.trailerVideo);
   useMovieTrailer(movieId);
   return (
-    <div>
+    <div className="z-50">
       <iframe
-        width="560"
-        height="315"
-        src={`https://www.youtube.com/embed/${trailerVideo?.key}?si=JbA8_SnnSnkrrW3V`}
+        className="w-[98.7vw] aspect-video"
+        src={`https://www.youtube.com/embed/${trailerVideo?.key}?si=G8BbXUfNjICHxmXr&amp;controls=0&autoplay=1`}
         title="YouTube video player"
-        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       ></iframe>
     </div>
