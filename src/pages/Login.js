@@ -100,7 +100,7 @@ const Login = () => {
           />
         </div>
       </div>
-      <div className="w-[100%] sm:w-[60%] md:w-[50%] lg:w-[35%] bg-[#000000BF] flex justify-center absolute top-32">
+      <div className="w-[100%] sm:w-[60%] md:w-[50%] lg:w-[35%] bg-[#000000BF] flex justify-center absolute top-20">
         <div className="w-[70%]">
           <form onSubmit={(e) => e.preventDefault()}>
             <h1 className="text-white mt-10 text-4xl font-semibold">
@@ -110,6 +110,7 @@ const Login = () => {
               <input
                 ref={name}
                 type="text"
+                style={{ color: "#ffffff" }}
                 placeholder="Name"
                 className="px-2 py-3 mb-3 mt-6 outline-none bg-[#333333] rounded w-[100%]"
               />
@@ -118,6 +119,7 @@ const Login = () => {
               <input
                 ref={email}
                 type="email"
+                style={{ color: "#ffffff" }}
                 placeholder="Email or phone number"
                 className="px-2 py-3 mb-3 mt-6 outline-none bg-[#333333] rounded w-[100%]"
               />
@@ -125,6 +127,7 @@ const Login = () => {
               <input
                 ref={email}
                 type="email"
+                style={{ color: "#ffffff" }}
                 placeholder="Email or phone number"
                 className="px-2 py-3 mb-3 outline-none bg-[#333333] rounded w-[100%]"
               />
@@ -132,6 +135,7 @@ const Login = () => {
             <input
               ref={password}
               type="password"
+              style={{ color: "#ffffff" }}
               placeholder="Password"
               className="px-2 py-3 outline-none bg-[#333333] rounded w-[100%]"
             />
@@ -139,9 +143,9 @@ const Login = () => {
             <button
               onClick={handleButtonClick}
               type="submit"
-              className="bg-[#E50914] py-3 text-white mt-6 rounded w-[100%]"
+              className="bg-[#E50914] py-3 text-white mt-6 rounded w-[100%] font-bold"
             >
-              {isSignInForm ? "Login" : "Sign Up"}
+              {isSignInForm ? "Sign In" : "Sign Up"}
             </button>
           </form>
           <div className="mb-16">
