@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { MOVIE_OPTIONS } from "../utils/constants";
 const Browse = () => {
+
   const navigate = useNavigate();
   const handleSignOut = () => {
     signOut(auth)
@@ -15,6 +17,16 @@ const Browse = () => {
         navigate("/error");
       });
   };
+
+  const getNowPlayingMovies = async () => {
+    const data = await fetch('https://api.themoviedb.org/3/movie/now_playing?page=1', MOVIE_OPTIONS);
+    const json = await data.json();
+    console.log("json", json);
+  } 
+
+  useEffect(() => {
+    getNowPlayingMovies();
+  }, [])
 
   return (
     <div>
