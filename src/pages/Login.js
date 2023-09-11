@@ -4,15 +4,15 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../utils/firebase";
-import { checkValidData } from "../utils/validate";
-import { useNavigate } from "react-router-dom";
-import { addUser } from "../Redux/slices/userSlice";
 import { useDispatch } from "react-redux";
+import { auth } from "../utils/firebase";
+import Header from "../components/Header";
+import { checkValidData } from "../utils/validate";
+import { addUser } from "../Redux/slices/userSlice";
+
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const name = useRef(null);
@@ -24,8 +24,6 @@ const Login = () => {
   };
 
   const handleButtonClick = () => {
-    // console.log("email", email.current.value);
-    // console.log("password", password.current.value);
 
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
@@ -53,7 +51,6 @@ const Login = () => {
               dispatch(
                 addUser({ uid: uid, email: email, displayName: displayName })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -75,12 +72,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed in
-          const user = userCredential.user;
-          if (user) {
-            navigate("/browse");
-          } else {
-            navigate("/");
-          }
+          // const user = userCredential.user;
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -91,80 +83,75 @@ const Login = () => {
   };
 
   return (
-    <div style={myStyle} className="flex justify-center">
-      <div className=" bg-gradient-to-b from-black h-[100vh] w-[100%]">
-        <div className="w-64 h-12 px-4 pt-0">
-          <img
-            src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-            alt="logo"
-          />
-        </div>
-      </div>
-      <div className="w-[100%] sm:w-[60%] md:w-[50%] lg:w-[35%] bg-[#000000BF] flex justify-center absolute top-20">
-        <div className="w-[70%]">
-          <form onSubmit={(e) => e.preventDefault()}>
-            <h1 className="text-white mt-10 text-4xl font-semibold">
-              {isSignInForm ? "Login" : "Sign Up"}
-            </h1>
-            {!isSignInForm && (
-              <input
-                ref={name}
-                type="text"
-                style={{ color: "#ffffff" }}
-                placeholder="Name"
-                className="px-2 py-3 mb-3 mt-6 outline-none bg-[#333333] rounded w-[100%]"
-              />
-            )}
-            {isSignInForm ? (
-              <input
-                ref={email}
-                type="email"
-                style={{ color: "#ffffff" }}
-                placeholder="Email or phone number"
-                className="px-2 py-3 mb-3 mt-6 outline-none bg-[#333333] rounded w-[100%]"
-              />
-            ) : (
-              <input
-                ref={email}
-                type="email"
-                style={{ color: "#ffffff" }}
-                placeholder="Email or phone number"
-                className="px-2 py-3 mb-3 outline-none bg-[#333333] rounded w-[100%]"
-              />
-            )}
-            <input
-              ref={password}
-              type="password"
-              style={{ color: "#ffffff" }}
-              placeholder="Password"
-              className="px-2 py-3 outline-none bg-[#333333] rounded w-[100%]"
-            />
-            <p className="text-red-700 py-2 font-semibold">{errorMessage}</p>
-            <button
-              onClick={handleButtonClick}
-              type="submit"
-              className="bg-[#E50914] py-3 text-white mt-6 rounded w-[100%] font-bold"
-            >
-              {isSignInForm ? "Sign In" : "Sign Up"}
-            </button>
-          </form>
-          <div className="mb-16">
-            <p
-              className="text-base text-[#737373] mt-8 cursor-pointer"
-              onClick={toggleSignInForm}
-            >
-              {isSignInForm ? (
-                <>
-                  New to Netflix? &nbsp;
-                  <span className="text-white">Sign up now</span>
-                </>
-              ) : (
-                <>
-                  Already registered? &nbsp;
-                  <span className="text-white">Sign In now</span>
-                </>
+    <div style={myStyle}>
+      <Header />
+      <div className="flex justify-center">
+        <div className="w-[100%] sm:w-[60%] md:w-[50%] lg:w-[35%] bg-[#000000BF] flex justify-center absolute top-20">
+          <div className="w-[70%]">
+            <form onSubmit={(e) => e.preventDefault()}>
+              <h1 className="text-white mt-10 text-4xl font-semibold">
+                {isSignInForm ? "Login" : "Sign Up"}
+              </h1>
+              {!isSignInForm && (
+                <input
+                  ref={name}
+                  type="text"
+                  style={{ color: "#ffffff" }}
+                  placeholder="Name"
+                  className="px-2 py-3 mb-3 mt-6 outline-none bg-[#333333] rounded w-[100%]"
+                />
               )}
-            </p>
+              {isSignInForm ? (
+                <input
+                  ref={email}
+                  type="email"
+                  style={{ color: "#ffffff" }}
+                  placeholder="Email or phone number"
+                  className="px-2 py-3 mb-3 mt-6 outline-none bg-[#333333] rounded w-[100%]"
+                />
+              ) : (
+                <input
+                  ref={email}
+                  type="email"
+                  style={{ color: "#ffffff" }}
+                  placeholder="Email or phone number"
+                  className="px-2 py-3 mb-3 outline-none bg-[#333333] rounded w-[100%]"
+                />
+              )}
+              <input
+                ref={password}
+                type="password"
+                style={{ color: "#ffffff" }}
+                placeholder="Password"
+                className="px-2 py-3 outline-none bg-[#333333] rounded w-[100%]"
+              />
+              <p className="text-red-700 py-2 font-semibold">{errorMessage}</p>
+              <button
+                onClick={handleButtonClick}
+                type="submit"
+                className="bg-[#E50914] py-3 text-white mt-6 rounded w-[100%] font-bold"
+              >
+                {isSignInForm ? "Sign In" : "Sign Up"}
+              </button>
+            </form>
+            <div className="mb-16">
+              <p
+                className="text-base text-[#737373] mt-8 cursor-pointer"
+                onClick={toggleSignInForm}
+              >
+                {isSignInForm ? (
+                  <>
+                    New to Netflix? &nbsp;
+                    <span className="text-white">Sign up now</span>
+                  </>
+                ) : (
+                  <>
+                    Already registered? &nbsp;
+                    <span className="text-white">Sign In now</span>
+                  </>
+                )}
+              </p>
+            </div>
           </div>
         </div>
       </div>
