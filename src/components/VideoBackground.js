@@ -6,7 +6,7 @@ const VideoBackground = ({ movieId }) => {
   const trailerVideo = useSelector((store) => store.movies.trailerVideo);
   useMovieTrailer(movieId);
   return (
-    <div className="z-50">
+    <div className="bg-gradient-to-b from-black">
       <iframe
         className="w-[98.7vw] aspect-video"
         src={`https://www.youtube.com/embed/${trailerVideo?.key}?si=G8BbXUfNjICHxmXr&amp;controls=0&autoplay=1&mute=1&loop=1&color=white`}

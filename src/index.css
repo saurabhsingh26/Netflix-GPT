@@ -13,3 +13,12 @@
   background-color: #90A4AE;
   border-radius: 30px; 
 }
+
+.background-color::before{
+  background: rgba(0, 0, 0, 0.37);
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}

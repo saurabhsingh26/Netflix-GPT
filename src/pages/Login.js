@@ -83,7 +83,7 @@ const Login = () => {
   };
 
   return (
-    <div style={myStyle}>
+    <div style={myStyle} className="background-color">
       <Header />
       <div className="flex justify-center">
         <div className="w-[100%] sm:w-[60%] md:w-[50%] lg:w-[35%] bg-[#000000BF] flex justify-center absolute top-20">

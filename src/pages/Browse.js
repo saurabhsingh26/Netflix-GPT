@@ -11,7 +11,7 @@ const Browse = () => {
   return (
     <div>
       <Header />
-      <div className="absolute top-24">
+      <div className="absolute top-0">
         <MainContainer />
         <SecondaryContainer />
       </div>
