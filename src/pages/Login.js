@@ -125,7 +125,7 @@ const Login = () => {
                 placeholder="Password"
                 className="px-2 py-3 outline-none bg-[#333333] rounded w-[100%]"
               />
-              <p className="text-red-700 py-2 font-semibold">{errorMessage}</p>
+              <p className="text-[#E50914] py-2 font-semibold">{errorMessage}</p>
               <button
                 onClick={handleButtonClick}
                 type="submit"
