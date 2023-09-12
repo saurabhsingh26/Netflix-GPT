@@ -38,7 +38,7 @@ const Header = () => {
       });
   };
   return (
-    <div className="bg-gradient-to-b from-black w-[100%] flex justify-between relative z-40">
+    <div className="bg-gradient-to-b from-black h-20 w-[100%] flex justify-between relative z-40">
       <div className="w-36 md:w-64 md:h-12 md:px-4 pt-0">
         <img src={LOGO} alt="logo" />
       </div>

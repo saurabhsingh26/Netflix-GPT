@@ -15,7 +15,8 @@
 }
 
 .background-color::before{
-  background: rgba(0, 0, 0, 0.37);
+  /* background: rgba(0, 0, 0, 0.37); */
+  background-color: #000000BF;
   content: '';
   display: block;
   height: 100%;
