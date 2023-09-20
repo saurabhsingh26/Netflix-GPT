@@ -2,4 +2,6 @@ import Login from "./Login";
 import Browse from "./Browse";
 import GptSearch from "./GptSearch";
 import Error from "./Error";
-export { Login, Browse, GptSearch, Error };
+import GptSearchBar from "./GptSearchBar";
+import GptMovieSuggestions from "./GptMovieSuggestions";
+export { Login, Browse, GptSearch, GptSearchBar, GptMovieSuggestions, Error };

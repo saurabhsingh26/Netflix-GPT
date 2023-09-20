@@ -4,10 +4,11 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../Redux/slices/userSlice";
 import { toggltGptSearchView } from "../Redux/slices/gptSlice";
+import { changeLanguage } from "../Redux/slices/configSlice";
 import { auth } from "../utils/firebase";
 import { LOGO } from "../utils/constants";
 import search from "../assets/search.svg";
-
+import { SUPPORTED_LANGUAGES } from "../utils/constants";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -43,6 +44,10 @@ const Header = () => {
   const handleSearchToggle = () => {
     dispatch(toggltGptSearchView());
   }
+
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  }
   return (
     <div className="bg-gradient-to-b from-black h-20 w-[100%] flex justify-between relative z-40">
       <div className="w-36 md:w-64 md:h-12 md:px-4 pt-0">
@@ -50,6 +55,20 @@ const Header = () => {
           <img src={LOGO} alt="logo" />
         </Link>
       </div>
+      {!user && (
+        <div className="pt-3 md:pt-6 px-2">
+          <select
+            className="outline-none rounded text-white bg-[#E50914] py-1 px-2"
+            onChange={handleLanguageChange}
+          >
+            {SUPPORTED_LANGUAGES.map((language) => (
+              <option key={language.identifier} value={language.identifier}>
+                {language.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
       {user && (
         <div className="pt-3 pr-4 md:pt-6 md:pr-4 flex">
           <div onClick={handleSearchToggle}>

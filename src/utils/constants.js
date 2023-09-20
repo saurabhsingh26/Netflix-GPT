@@ -10,3 +10,19 @@ export const MOVIE_OPTIONS = {
 };
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
+
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "sanskrit", name: "Sanskrit" },
+  { identifier: "bhojpuri", name: "Bhojpuri" },
+  { identifier: "gujarati", name: "Gujarati" },
+  { identifier: "marathi", name: "Marathi" },
+  { identifier: "punjabi", name: "Punjabi" },
+  { identifier: "tamil", name: "Tamil" },
+  { identifier: "telugu", name: "Telugu" },
+  { identifier: "nepali", name: "Nepali" },
+  { identifier: "spanish", name: "Spanish" },
+  { identifier: "french", name: "French" },
+  { identifier: "russian", name: "Russian" },
+];
