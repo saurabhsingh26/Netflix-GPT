@@ -9,10 +9,12 @@ import { auth } from "../utils/firebase";
 import { LOGO } from "../utils/constants";
 import search from "../assets/search.svg";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
+import lang from "../utils/languageConstants";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const selectedLang = useSelector((store) => store.config.lang);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -56,7 +58,7 @@ const Header = () => {
         </Link>
       </div>
       {!user && (
-        <div className="pt-3 md:pt-6 px-2">
+        <div className="pt-3 md:pt-6 px-2 md:px-6">
           <select
             className="outline-none rounded text-white bg-[#E50914] py-1 px-2"
             onChange={handleLanguageChange}
@@ -85,7 +87,7 @@ const Header = () => {
             onClick={handleSignOut}
             className="text-white bg-[#E50914] h-7 px-1"
           >
-            Sign out
+            {lang[selectedLang].signout}
           </button>
         </div>
       )}

@@ -4,16 +4,17 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../utils/firebase";
 import Header from "../components/Header";
 import { checkValidData } from "../utils/validate";
 import { addUser } from "../Redux/slices/userSlice";
-
+import lang from "../utils/languageConstants";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
   const dispatch = useDispatch();
+  const selectedLang = useSelector((store) => store.config.lang);
 
   const name = useRef(null);
   const email = useRef(null);
@@ -90,14 +91,18 @@ const Login = () => {
           <div className="w-[70%]">
             <form onSubmit={(e) => e.preventDefault()}>
               <h1 className="text-white mt-10 text-4xl font-semibold">
-                {isSignInForm ? "Login" : "Sign Up"}
+                {isSignInForm ? (
+                  <>{lang[selectedLang].signin}</>
+                ) : (
+                  <>{lang[selectedLang].signup}</>
+                )}
               </h1>
               {!isSignInForm && (
                 <input
                   ref={name}
                   type="text"
                   style={{ color: "#ffffff" }}
-                  placeholder="Name"
+                  placeholder={lang[selectedLang].name}
                   className="px-2 py-3 mb-3 mt-6 outline-none bg-[#333333] rounded w-[100%]"
                 />
               )}
@@ -106,7 +111,7 @@ const Login = () => {
                   ref={email}
                   type="email"
                   style={{ color: "#ffffff" }}
-                  placeholder="Email or phone number"
+                  placeholder={lang[selectedLang].email}
                   className="px-2 py-3 mb-3 mt-6 outline-none bg-[#333333] rounded w-[100%]"
                 />
               ) : (
@@ -114,7 +119,7 @@ const Login = () => {
                   ref={email}
                   type="email"
                   style={{ color: "#ffffff" }}
-                  placeholder="Email or phone number"
+                  placeholder={lang[selectedLang].email}
                   className="px-2 py-3 mb-3 outline-none bg-[#333333] rounded w-[100%]"
                 />
               )}
@@ -122,16 +127,22 @@ const Login = () => {
                 ref={password}
                 type="password"
                 style={{ color: "#ffffff" }}
-                placeholder="Password"
+                placeholder={lang[selectedLang].password}
                 className="px-2 py-3 outline-none bg-[#333333] rounded w-[100%]"
               />
-              <p className="text-[#E50914] py-2 font-semibold">{errorMessage}</p>
+              <p className="text-[#E50914] py-2 font-semibold">
+                {errorMessage}
+              </p>
               <button
                 onClick={handleButtonClick}
                 type="submit"
                 className="bg-[#E50914] py-3 text-white mt-6 rounded w-[100%] font-bold"
               >
-                {isSignInForm ? "Sign In" : "Sign Up"}
+                {isSignInForm ? (
+                  <> {lang[selectedLang].signin}</>
+                ) : (
+                  <>{lang[selectedLang].signup}</>
+                )}
               </button>
             </form>
             <div className="mb-16">
@@ -141,13 +152,17 @@ const Login = () => {
               >
                 {isSignInForm ? (
                   <>
-                    New to Netflix? &nbsp;
-                    <span className="text-white">Sign up now</span>
+                    {lang[selectedLang].newtonetflix} &nbsp;
+                    <span className="text-white">
+                      {lang[selectedLang].signupnow}
+                    </span>
                   </>
                 ) : (
                   <>
-                    Already registered? &nbsp;
-                    <span className="text-white">Sign In now</span>
+                    {lang[selectedLang].alreadyregistered} &nbsp;
+                    <span className="text-white">
+                      {lang[selectedLang].signinnow}
+                    </span>
                   </>
                 )}
               </p>

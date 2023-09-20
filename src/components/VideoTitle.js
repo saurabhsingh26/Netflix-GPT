@@ -1,6 +1,9 @@
 import React from "react";
 import useWindowSize from "../utils/useWindowSize";
+import lang from "../utils/languageConstants";
+import { useSelector } from "react-redux";
 const VideoTitle = ({ title, overview }) => {
+  const selectedLang = useSelector((store) => store.config.lang);
   const screen = useWindowSize();
   return (
     <>
@@ -14,10 +17,10 @@ const VideoTitle = ({ title, overview }) => {
           </p>
           <div>
             <button className="px-8 py-2 bg-white text-black rounded-md">
-              ▶Play
+              ▶{lang[selectedLang].play}
             </button>
             <button className="px-8 py-2 bg-gray-500 text-white bg-opacity-50 rounded-md mx-3">
-              More Info
+              {lang[selectedLang].moreinfo}
             </button>
           </div>
         </div>
@@ -28,10 +31,10 @@ const VideoTitle = ({ title, overview }) => {
           </h1>
           <div className="pt-7">
             <button className="px-8 py-2 bg-white text-black rounded-md">
-              ▶Play
+              ▶{lang[selectedLang].play}
             </button>
             <button className="px-8 py-2 bg-gray-500 text-white bg-opacity-50 rounded-md mx-3">
-              More Info
+              {lang[selectedLang].moreinfo}
             </button>
           </div>
         </div>
