@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 
-import { Login, Browse, Search, Error } from "../pages";
+import { Login, Browse , Error } from "../pages";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -13,10 +13,6 @@ const App = () => {
     {
       path: "/browse",
       element: <Browse />,
-    },
-    {
-      path: "/search",
-      element: <Search />,
     },
     {
       path: "*",

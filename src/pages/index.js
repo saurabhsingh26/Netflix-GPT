@@ -1,5 +1,5 @@
 import Login from "./Login";
 import Browse from "./Browse";
-import Search from "./Search";
+import GptSearch from "./GptSearch";
 import Error from "./Error";
-export { Login, Browse, Search, Error }
+export { Login, Browse, GptSearch, Error };
