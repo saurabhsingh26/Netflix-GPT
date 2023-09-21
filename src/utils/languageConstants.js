@@ -74,7 +74,7 @@ const lang = {
     signout: "साइन आउट करीं",
     nowplaying: "अब खेलल जा रहल बा",
     toprated: "टॉप रेटेड बा",
-    popular: "लोकप्रिय",
+    popular: "लोकप्रिय बा",
     upcoming: "आगामी बा",
     play: "देखीं",
     moreinfo: "अउरी जानकारी खातिर देखीं",
