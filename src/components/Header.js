@@ -15,6 +15,7 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const selectedLang = useSelector((store) => store.config.lang);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch); 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -75,7 +76,15 @@ const Header = () => {
         <div className="pt-3 pr-4 md:pt-6 md:pr-4 flex">
           <div onClick={handleSearchToggle}>
             <div className="h-7 flex mx-2 sm:mx-3 lg:mx-10 cursor-pointer">
-              <img src={search} alt="search" />
+              {showGptSearch ? (
+                <img
+                  src="https://cdn-icons-png.flaticon.com/128/9183/9183247.png"
+                  alt="back"
+                  title="back"
+                />
+              ) : (
+                <img src={search} alt="search" title="search" />
+              )}
             </div>
           </div>
           <img
