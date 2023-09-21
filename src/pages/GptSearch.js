@@ -2,7 +2,7 @@ import React from "react";
 import { GptSearchBar, GptMovieSuggestions } from "./";
 const GptSearch = () => {
   return (
-    <div style={myStyle} className="absolute top-0">
+    <div style={myStyle} className="absolute top-0 background-color">
       <GptSearchBar />
       <GptMovieSuggestions />
     </div>
