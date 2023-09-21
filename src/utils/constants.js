@@ -26,3 +26,7 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "french", name: "French" },
   { identifier: "russian", name: "Russian" },
 ];
+
+
+export const FAVICON =
+  "https://assets.nflxext.com/ffe/siteui/common/icons/nficon2016.ico";
