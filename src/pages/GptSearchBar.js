@@ -1,22 +1,13 @@
 import React, { useRef } from "react";
 import lang from "../utils/languageConstants";
 import { useSelector } from "react-redux";
-import openai from "../utils/openai";
 const GptSearchBar = () => {
   const searchText = useRef(null);
   const selectedLang = useSelector((store) => store.config.lang);
 
   const handleGptSearchClick = async () => {
     console.log(searchText.current.value);
-    const gptQuery =
-      "Act as a Movie Recommendation system and suggest some movies for the query : " +
-      searchText.current.value +
-      ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholey, Don, 3 idiots, Drishyam";
-    const gptResults = await openai.chat.completions.create({
-      messages: [{ role: "user", content: gptQuery }],
-      model: "gpt-3.5-turbo",
-    });
-    console.log(gptResults.choices);
+    
   };
 
   return (

@@ -31,4 +31,4 @@ export const SUPPORTED_LANGUAGES = [
 export const FAVICON =
   "https://assets.nflxext.com/ffe/siteui/common/icons/nficon2016.ico";
 
-export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
+  
