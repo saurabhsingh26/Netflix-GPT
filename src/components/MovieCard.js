@@ -5,10 +5,10 @@ const MovieCard = ({ movies }) => {
   if (!movies) return;
   return (
     <div className="overflow-x-scroll">
-      <div className="w-40 flex justify-between">
+      <div className="w-40 md:w-52 flex justify-between">
         {movies.map((movie) => (
           <img
-            className="pr-2 cursor-pointer hover:scale-x-110"
+            className="cursor-pointer rounded-3xl mr-6 hover:scale-x-110"
             key={movie?.id}
             src={IMG_CDN_URL + movie?.poster_path}
             alt={movie?.original_title}
