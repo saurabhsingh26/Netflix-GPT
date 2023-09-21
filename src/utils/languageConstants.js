@@ -18,6 +18,7 @@ const lang = {
     upcoming: "Upcoming",
     play: "Play",
     moreinfo: "More Info",
+    results: "Results",
   },
   sanskrit: {
     search: "अन्वेषण",
@@ -38,6 +39,7 @@ const lang = {
     upcoming: "आगामी",
     play: "पश्यतु",
     moreinfo: "अधिकः जानकारी",
+    results: "परिणामाः",
   },
   hindi: {
     search: "खोज",
@@ -58,6 +60,7 @@ const lang = {
     upcoming: "आगामी",
     play: "देखे",
     moreinfo: "अधिक जानकारी",
+    results: "परिणाम",
   },
   bhojpuri: {
     search: "तलाशी",
@@ -78,6 +81,7 @@ const lang = {
     upcoming: "आगामी बा",
     play: "देखीं",
     moreinfo: "अउरी जानकारी खातिर देखीं",
+    results: "परिणाम",
   },
   marathi: {
     search: "शोध",
@@ -98,6 +102,7 @@ const lang = {
     upcoming: "आगामी",
     play: "पहा",
     moreinfo: "अधिक माहिती",
+    results: "परिणाम",
   },
   gujarati: {
     search: "શોધ",
@@ -118,6 +123,7 @@ const lang = {
     upcoming: "આગામી",
     play: "રમ",
     moreinfo: "વધુ માહિતી",
+    results: "પરિણામો",
   },
   punjabi: {
     search: "ਖੋਜ",
@@ -138,6 +144,7 @@ const lang = {
     upcoming: "ਆਗਾਮੀ",
     play: "ਖੇਡੋ",
     moreinfo: "ਹੋਰ ਜਾਣਕਾਰੀ",
+    results: "ਨਤੀਜੇ",
   },
   tamil: {
     search: "தேடல்",
@@ -158,6 +165,7 @@ const lang = {
     upcoming: "வரவிருக்கிறது",
     play: "விளையாடு",
     moreinfo: "மேலும் தகவல்",
+    results: "முடிவுகள்",
   },
   telugu: {
     search: "వెతకండి",
@@ -178,6 +186,7 @@ const lang = {
     upcoming: "రాబోయేది",
     play: "ప్లే",
     moreinfo: "మరింత సమాచారం",
+    results: "ఫలితాలు",
   },
   nepali: {
     search: "खोज",
@@ -198,6 +207,7 @@ const lang = {
     upcoming: "आगामी",
     play: "खेल्नु",
     moreinfo: "थप जानकारी",
+    results: "परिणामहरू",
   },
   spanish: {
     search: "Buscar",
@@ -218,6 +228,7 @@ const lang = {
     upcoming: "Próximo",
     play: "jugar",
     moreinfo: "Más información",
+    results: "Resultados",
   },
   french: {
     search: "Recherche",
@@ -238,6 +249,7 @@ const lang = {
     upcoming: "A venir",
     play: "jouer",
     moreinfo: "Plus d'informations",
+    results: "Résultats",
   },
   russian: {
     search: "поиск",
@@ -258,6 +270,7 @@ const lang = {
     upcoming: "Предстоящие",
     play: "играть",
     moreinfo: "Больше информации",
+    results: "Полученные результаты",
   },
 };
 
