@@ -1,7 +1,0 @@
-{
-  "hosting": {
-    "site": "netflix-gpt-saurabh",
-    "public": "build",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-  }
-}
