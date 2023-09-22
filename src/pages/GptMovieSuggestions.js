@@ -8,9 +8,9 @@ const GptMovieSuggestions = () => {
   const selectedLang = useSelector((store) => store.config.lang);
   if (!gptMovies) return;
   return (
-    <div className="text-[#E50914] w-[100%] absolute top-40">
+    <div className="text-[#E50914] w-[100%] absolute top-52 md:top-40">
       <div className="">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mt-4 mb-6 text-center">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold my-10 md:my-6 text-center">
           {lang[selectedLang].results}
         </h1>
         <div>
