@@ -11,7 +11,7 @@ const VideoTitle = ({ title, overview }) => {
     <>
       {screen.width >= 640 ? (
         <div className="w-[98.7vw] aspect-video pt-20 md:pt-24 lg:pt-36 px-2 sm:px-12 absolute top-0 bg-gradient-to-r from-black">
-          <h1 className="text-6xl md:text-7xl md:font-bold lg:text-8xl lg:font-bold text-white -tracking-[0.3rem] italic">
+          <h1 className="text-6xl md:text-7xl md:font-bold lg:text-8xl lg:font-bold text-[#FF5C31] -tracking-[0.3rem] italic">
             {title}
           </h1>
           {/* <p className="py-3 text-[14px] lg:text-lg text-gray-500 lg:text-white lg:w-1/2">
