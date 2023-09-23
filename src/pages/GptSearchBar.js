@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import lang from "../utils/languageConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { MOVIE_OPTIONS } from "../utils/constants";
-import { addGptMovieResults } from "../Redux/slices/gptSlice";
+import { addGptMovieResults, removeGptMovieResults } from "../Redux/slices/gptSlice";
 const GptSearchBar = () => {
   const searchText = useRef(null);
   const dispatch = useDispatch();
@@ -10,6 +10,9 @@ const GptSearchBar = () => {
 
   const handleChange = async() => {
     const query = searchText.current.value;
+    if(!query){
+      dispatch(removeGptMovieResults());return;
+    }
     const data = await fetch(
       `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&page=1`,
       MOVIE_OPTIONS
@@ -29,9 +32,9 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="flex justify-center w-[100%] mt-36 absolute md:-top-10">
+    <div className="flex justify-center w-[100%] mt-36 absolute md:-top-14">
       <form
-        className="w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%] bg-black p-2 flex"
+        className="w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%] flex"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
