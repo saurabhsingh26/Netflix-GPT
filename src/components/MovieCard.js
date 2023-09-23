@@ -8,7 +8,7 @@ const MovieCard = ({ movies }) => {
       <div className="w-40 md:w-52 flex justify-between">
         {movies.map((movie) => (
           <img
-            className="cursor-pointer rounded-3xl mr-6"
+            className="cursor-pointer rounded-3xl mr-8 movie-card my-5"
             key={movie?.id}
             src={IMG_CDN_URL + movie?.poster_path}
             alt={movie?.original_title}

@@ -10,7 +10,7 @@ const GptMovieSuggestions = () => {
   return (
     <div className="text-[#E50914] w-[100%] absolute top-52 md:top-40">
       <div className="">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold my-10 md:my-6 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold my-6 md:my-4 text-center">
           {lang[selectedLang].results}
         </h1>
         <div>
